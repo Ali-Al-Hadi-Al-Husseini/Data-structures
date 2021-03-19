@@ -337,3 +337,72 @@ class Queue:
 
     def is_empty(self):
         return self.size == 0
+class TreeNode:
+    def __init__(self, value):
+        self.value = value  # data
+        self.children = []  # references to other nodes
+
+    def add_child(self, child_node):
+        # creates parent-child relationship
+        print("Adding " + child_node.value)
+        self.children.append(child_node)
+
+    def remove_child(self, child_node):
+        # removes parent-child relationship
+        print("Removing " + child_node.value + " from " + self.value)
+        self.children = [child for child in self.children
+                         if child is not child_node]
+
+    def traverse(self):
+        # moves through each node referenced from self downwards
+        nodes_to_visit = [self]
+        while len(nodes_to_visit) > 0:
+            current_node = nodes_to_visit.pop()
+            print(current_node.value)
+            nodes_to_visit += current_node.children
+
+
+class BinarySearchTree:
+    def __init__(self, value, depth=1):
+        self.value = value
+        self.depth = depth
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        if (value < self.value):
+            if (self.left is None):
+                self.left = BinarySearchTree(value, self.depth + 1)
+
+            else:
+                self.left.insert(value)
+        else:
+            if (self.right is None):
+                self.right = BinarySearchTree(value, self.depth + 1)
+  
+            else:
+                self.right.insert(value)
+
+    def get_node_by_value(self, value):
+        if (self.value == value):
+            return self
+        elif ((self.left is not None) and (value < self.value)):
+            return self.left.get_node_by_value(value)
+        elif ((self.right is not None) and (value >= self.value)):
+            return self.right.get_node_by_value(value)
+        else:
+            return None
+
+    def depth_first_traversal(self):
+        if (self.left is not None):
+            self.left.depth_first_traversal()
+
+        if (self.right is not None):
+            self.right.depth_first_traversal()
+
+    def invertTree(self):
+        if self is None:
+            return None
+        self.right, self.left = self.left, self.right
+        self.right.invertTree()
+        self.left.invertTree()
