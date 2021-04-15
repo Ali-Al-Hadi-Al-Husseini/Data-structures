@@ -451,3 +451,9 @@ class Graph:
         start.extend(next_vertices)
         
     return False
+
+class Hash_map:
+  pass
+
+class heaps:
+  pass
