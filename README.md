@@ -8,7 +8,8 @@ pip3 install DS
 ```
 ## Usage
 ```python 
-  from DS import LISTS
+  from DS import Linked_list 
   Link_list1 = Linked_List(head_node)
+  
 ```
 
