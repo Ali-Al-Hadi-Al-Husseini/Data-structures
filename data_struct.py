@@ -452,8 +452,8 @@ class Graph:
         
     return False
 
-# class Hash_map:
-#   pass
+class Hash_map:
+  pass
 
-# class heaps:
-#   pass
+class heaps:
+  pass
